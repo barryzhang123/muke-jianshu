@@ -19,12 +19,11 @@ export const Logo = styled.a.attrs({href : '/'})`
 
 export const Nav = styled.nav`
     width: 960px;
-    height : 58px;
     margin: 0 auto;
     box-sizing: border-box;
 `
 export const NavItem = styled.div`
-    line-height : 58px;
+    line-height : 56px;
     padding : 0 15px;
     font-size : 17px;
     color : #333;
@@ -155,7 +154,7 @@ export const SearchTitle = styled.div`
 export const SearchSwitch = styled.span`
 	float: right;
 	font-size: 13px;
-	cursor : point;
+	cursor : pointer;
 	.spin{
 	    display : block;
 	    margin-right : 3px;

@@ -10,27 +10,29 @@ import '../../statics/iconfont/iconfont'
 
 class Header extends Component {
     getSearchArea(){
-        const {focused} = this.props;
-        if(focused){
+        const {focused, mouseIn,  currentPage, totalPage, listItem, handlerMouseEnter, handlerMouseLeave, handlerChangePage} = this.props;
+        let newJsList = listItem.toJS();
+        if(focused || mouseIn){
             return (
-                <SearchInfo>
+                <SearchInfo
+                    onMouseEnter = {handlerMouseEnter}
+                    onMouseLeave = {handlerMouseLeave}
+                >
                     <SearchTitle>
                         热门搜索
-                        <SearchSwitch>
-                            <i  className="iconfont spin">&#xe851;</i>
+                        <SearchSwitch
+                            onClick={() => handlerChangePage(currentPage, totalPage,this.spinIcon)}
+                        >
+                            <i  ref={(current) => {this.spinIcon = current}}className="iconfont spin">&#xe851;</i>
                             换一批
                         </SearchSwitch>
                     </SearchTitle>
                     <SearchList>
-                        <SearchListItem key={1}><a href='./' className = 'item-content'>区块链</a></SearchListItem>
-                        <SearchListItem key={2}><a href='./' className = 'item-content'>小程序</a></SearchListItem>
-                        <SearchListItem key={3}><a href='./' className = 'item-content'>vue</a></SearchListItem>
-                        <SearchListItem key={4}><a href='./' className = 'item-content'>毕业</a></SearchListItem>
-                        <SearchListItem key={5}><a href='./' className = 'item-content'>PHP</a></SearchListItem>
-                        <SearchListItem key={6}><a href='./' className = 'item-content'>故事</a></SearchListItem>
-                        <SearchListItem key={7}><a href='./' className = 'item-content'>flutter</a></SearchListItem>
-                        <SearchListItem key={8}><a href='./' className = 'item-content'>理财</a></SearchListItem>
-                        <SearchListItem key={9}><a href='./' className = 'item-content'>美食</a></SearchListItem>
+                        {
+                            newJsList.map((item, index) => {
+                                return  <SearchListItem key={index}><a href='./' className = 'item-content'>{item}</a></SearchListItem>
+                            }).slice((currentPage -1)*10 , currentPage * 10)
+                        }
                     </SearchList>
                 </SearchInfo>
             )
@@ -40,7 +42,7 @@ class Header extends Component {
 
     }
     render() {
-        const {focused, handlerFocus, handlerBlur} = this.props;
+        const {focused, listItem, handlerFocus, handlerBlur} = this.props;
         return (
             <HeaderWrapper>
                 <Logo ></Logo>
@@ -57,7 +59,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className = {focused ? 'focused' : ''}
-                                onFocus = {handlerFocus}
+                                onFocus = {()=> handlerFocus(listItem)}
                                 onBlur = {handlerBlur}
                             />
                         </CSSTransition>
@@ -83,17 +85,44 @@ class Header extends Component {
 //映射store中的state到props
 const mapStateToProps = (state) =>{
     return {
-        focused : state.get('header').get('focused'),
+        focused : state.getIn(['header', 'focused']),
+        mouseIn : state.getIn(['header', 'mouseIn']),
+        listItem : state.getIn(['header', 'listItem']),
+        currentPage : state.getIn(['header', 'currentPage']),
+        totalPage : state.getIn(['header', 'totalPage']),
     }
 }
 //映射dispatch到props
 const mapDispatchToProps = (dispatch) => {
     return {
-        handlerFocus(){
+        handlerFocus(list){
+            if(list.size === 0){
+                dispatch(actionCreators.getList());
+            }
             dispatch(actionCreators.searchOnFocus());
         },
         handlerBlur(){
             dispatch(actionCreators.searchOnBlur());
+        },
+        handlerMouseEnter(){
+            dispatch(actionCreators.searchMouseIn());
+        },
+        handlerMouseLeave(){
+            dispatch(actionCreators.searchMouseOut());
+        },
+        handlerChangePage(currentPage, totalPage, spinIcon){
+            let originAngle = spinIcon.style.transform.replace(/[^0-9]/g, '')
+            if(originAngle){
+                originAngle = parseInt(originAngle, 10) ;
+            }else{
+                originAngle = 0;
+            }
+            spinIcon.style.transform = 'rotate(' + (originAngle + 360) + 'deg)';
+            if(currentPage === totalPage){
+                dispatch(actionCreators.changeSearchList(1));
+            }else{
+                dispatch(actionCreators.changeSearchList(currentPage + 1));
+            }
         }
     }
 }

@@ -1,7 +1,11 @@
 import {constants} from './'
 import {fromJS} from 'immutable'
 const defaultState = fromJS({
-    focused : false
+    focused : false,
+    mouseIn : false,
+    listItem : [],
+    currentPage : 1,
+    totalPage: 1
 })
 
 export default (state = defaultState, action) => {
@@ -12,8 +16,18 @@ export default (state = defaultState, action) => {
            return state.set('focused', true);
        case constants.SEARCH_ON_BLUR:
            return state.set('focused', false);
+       case constants.SEARCH_MOUSE_IN:
+           return state.set('mouseIn', true);
+       case constants.SEARCH_MOUSE_OUT:
+           return state.set('mouseIn', false);
+       case constants.SEARCH_GET_LIST:
+           return state.merge({
+               listItem : action.data,
+               totalPage : action.totalPage,
+           });
+       case constants.SEARCH_CHANGE_LIST:
+           return state.set('currentPage', action.currentPage);
        default:
-
            return state;
    }
 }
