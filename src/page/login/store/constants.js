@@ -1,1 +1,1 @@
-export const HOME_GET_ARTICLE_DATA = 'home/get_article_data';
+export const LOGIN_USER_LOGIN = 'login/user_login';

@@ -1,21 +1,18 @@
 import * as constants from './constants'
 import axios from 'axios'
 
-export const getHomeArticleData = (data) => ({
-    type : constants.HOME_GET_ARTICLE_DATA,
-    topicList : data.topicList,
-    articleList : data.articleList,
-    recommendList : data.recommendList,
-});
+export const loginAction = (data) => ({
+    type : constants.LOGIN_USER_LOGIN,
+    account : data
+})
 
-export const getHomeArticleDataAction = () => {
+export const asyncLogin = (account, password) => {
     return (dispatch) => {
-        axios.get('/api/home.json').then((res) => {
-            if(res.data.success === true){
-                dispatch(getHomeArticleData(res.data.data));
-            }
-        }).catch((error) => {
-
-        })
+        axios.get('/api/login.json', {
+                    account : account,
+                    password : password
+            }).then((res) =>{
+                dispatch(loginAction(account));
+            })
     }
-};
+}

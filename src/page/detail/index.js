@@ -1,41 +1,12 @@
 import React,{ Component} from 'react'
 import { connect }from 'react-redux'
-import {
-    HomeWrapper,
-    HomeLeft,
-    HomeRight,
-    BackTop
-}from './style'
-import HomeRightBoard from './components/HomeRightBoard'
-import HomeRightRecommend from './components/HomeRightRecommend'
-import HomeArticle from './components/HomeArticle'
-import HomeBanner from './components/HomeBanner'
-import {getHomeArticleDataAction} from './store/actionCreators'
 
-
-class Home extends Component {
-    componentDidMount(){
-        this.props.getHomeArticleDataAction();
-    }
+class Detail extends Component {
     render(){
         return (
-            <HomeWrapper className='clearfix'>
-                <HomeLeft>
-                    <HomeBanner>
-                    </HomeBanner>
-                    <HomeArticle>
-                    </HomeArticle>
-                </HomeLeft>
-                <HomeRight>
-                    <HomeRightBoard>
-                    </HomeRightBoard>
-                    <HomeRightRecommend>
-                    </HomeRightRecommend>
-                </HomeRight>
-                <BackTop>
-                    <i className='iconfont back-top' >&#xe631;</i>
-                </BackTop>
-            </HomeWrapper>
+            <div>
+                详情界面
+            </div>
         )
     }
 }
@@ -46,9 +17,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getHomeArticleDataAction(){
-            dispatch(getHomeArticleDataAction());
-        }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)

@@ -1,6 +1,8 @@
 import React,{ Component} from 'react';
 import {connect} from 'react-redux'
 import {HomeArticleItem, HomeArticleItemInfo} from '../style'
+import {Link} from 'react-router-dom'
+
 class HomeArticle extends Component{
     render(){
         let {articleList} = this.props;
@@ -9,21 +11,23 @@ class HomeArticle extends Component{
                 {
                     articleList.map((item, index) => {
                         return (
-                            <HomeArticleItem key={item.get('id')}>
-                                <HomeArticleItemInfo >
-                                    <h3 className='title'>
-                                        {item.get('title')}
-                                    </h3>
-                                    <p className='desc'>
-                                        {item.get('desc')}
-                                    </p>
-                                </HomeArticleItemInfo>
-                                <img
-                                    className = 'pic'
-                                    src ={item.get('imgUrl')}
-                                    alt = '图片'
-                                />
-                            </HomeArticleItem>
+                            <Link key={item.get('id')} to={'/detail/'+ item.get('id')}>
+                                <HomeArticleItem >
+                                    <HomeArticleItemInfo >
+                                        <h3 className='title'>
+                                            {item.get('title')}
+                                        </h3>
+                                        <p className='desc'>
+                                            {item.get('desc')}
+                                        </p>
+                                    </HomeArticleItemInfo>
+                                    <img
+                                        className = 'pic'
+                                        src ={item.get('imgUrl')}
+                                        alt = '图片'
+                                    />
+                                </HomeArticleItem>
+                            </Link>
                         )
                     })
                 }

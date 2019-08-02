@@ -7,6 +7,7 @@ import {actionCreators} from  './store'
 import {CSSTransition} from 'react-transition-group'
 import  {connect} from 'react-redux';
 import '../../statics/iconfont/iconfont'
+import {Link} from 'react-router-dom'
 
 class Header extends Component {
     getSearchArea(){
@@ -42,7 +43,7 @@ class Header extends Component {
 
     }
     render() {
-        const {focused, listItem, handlerFocus, handlerBlur} = this.props;
+        const {focused, listItem,login, account, handlerFocus, handlerBlur} = this.props;
         return (
             <HeaderWrapper>
                 <Logo ></Logo>
@@ -73,7 +74,11 @@ class Header extends Component {
                         写文章
                     </Button>
                     <Button className =  'register'>注册</Button>
-                    <NavItem className = 'right'>登录</NavItem>
+                    {
+                        login === true? <NavItem className = 'right'>{account}</NavItem> :
+                        <Link to={'/login'}><NavItem className = 'right'>登录</NavItem></Link>
+                    }
+
                     <NavItem className = 'right'>
                         <i className = 'iconfont item-Aa'>&#xe636;</i>
                     </NavItem>
@@ -90,6 +95,8 @@ const mapStateToProps = (state) =>{
         listItem : state.getIn(['header', 'listItem']),
         currentPage : state.getIn(['header', 'currentPage']),
         totalPage : state.getIn(['header', 'totalPage']),
+        account : state.getIn(['login','account']),
+        login : state.getIn(['login','login']),
     }
 }
 //映射dispatch到props

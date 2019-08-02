@@ -17,7 +17,6 @@ class HomeRightRecommend extends Component{
             originalTransform = 0;
         }
         icon.style.transform = 'rotate(' + (originalTransform + 360) + 'deg)'
-        console.info(originalTransform);
     }
     render(){
         return (

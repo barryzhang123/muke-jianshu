@@ -12,7 +12,6 @@ import HomeArticle from './components/HomeArticle'
 import HomeBanner from './components/HomeBanner'
 import {getHomeArticleDataAction} from './store/actionCreators'
 
-
 class Home extends Component {
     componentDidMount(){
         this.props.getHomeArticleDataAction();
