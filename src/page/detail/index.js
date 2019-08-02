@@ -42,7 +42,6 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        articleList : state.getIn(['home', 'articleList']),
     }
 }
 const mapDispatchToProps = (dispatch) => {

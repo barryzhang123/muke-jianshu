@@ -23,7 +23,7 @@ class Header extends Component {
                         <SearchSwitch
                             onClick={() => handlerChangePage(currentPage, totalPage,this.spinIcon)}
                         >
-                            <i  ref={(current) => {this.spinIcon = current}}className="iconfont spin">&#xe851;</i>
+                            <i  ref={(current) => {this.spinIcon = current}}className="iconfont spin">&#58889;</i>
                             换一批
                         </SearchSwitch>
                     </SearchTitle>
@@ -63,19 +63,19 @@ class Header extends Component {
                                 onBlur = {handlerBlur}
                             />
                         </CSSTransition>
-                        <i className={focused ? 'focused iconfont search-icon' : 'iconfont search-icon'} >&#58900;</i>
+                        <i className={focused ? 'focused iconfont search-icon' : 'iconfont search-icon'} >&#58936;</i>
                         {this.getSearchArea()}
                     </SearchWrapper>
                 </Nav>
                 <Addition>
                     <Button className = 'writing'>
-                        <i className = 'iconfont'>&#xe615;</i>
+                        <i className = 'iconfont write-icon'>&#58894;</i>
                         写文章
                     </Button>
                     <Button className =  'register'>注册</Button>
                     <NavItem className = 'right'>登录</NavItem>
                     <NavItem className = 'right'>
-                        <i className = 'iconfont spin'>&#xe636;</i>
+                        <i className = 'iconfont item-Aa'>&#xe636;</i>
                     </NavItem>
                 </Addition>
             </HeaderWrapper>

@@ -82,9 +82,6 @@ export const RightRecommendSwitch = styled.div`
 	    display : block;
 	    margin-right : 3px;
         float : left;
-        /*此处要有过渡  否则旋转360度看不出来*/
-        transition : all .2s ease-in;
-        transform-origin: center center;
 	}
 `
 export const RightRecommendList = styled.div`

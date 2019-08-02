@@ -9,22 +9,12 @@ import {
 }from '../style'
 
 class HomeRightRecommend extends Component{
-    switch(icon){
-        let originalTransform = icon.style.transform.replace(/[^0-9]/g,'');
-        if(originalTransform){
-            originalTransform = parseInt(originalTransform);
-        }else{
-            originalTransform = 0;
-        }
-        icon.style.transform = 'rotate(' + (originalTransform + 360) + 'deg)'
-        console.info(originalTransform);
-    }
     render(){
         return (
             <RightRecommendWrapper>
                 <RightRecommendTitle>
                     推荐作者
-                    <RightRecommendSwitch onClick={() => this.switch(this.spinIcon)}>
+                    <RightRecommendSwitch>
                         <i  ref={(current) => {this.spinIcon = current}}className="iconfont spin">&#58889;</i>
                         换一批
                     </RightRecommendSwitch>

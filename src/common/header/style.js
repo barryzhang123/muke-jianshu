@@ -27,13 +27,16 @@ export const NavItem = styled.div`
     padding : 0 15px;
     font-size : 17px;
     color : #333;
+    .item-Aa{
+        font-size : 24px;
+    }
     &.left{
         float : left;
     }
     &.right{
+        font-size : 15px;
         float : right;
         color : #969696;
-
     }
     &.active{
         color : #ea6f5a;
@@ -122,6 +125,9 @@ export const Button = styled.div`
         color : #fff;
         background: #ea6f5a;
     }
+    .write-icon{
+        margin-right : 4px;
+    }
 `
 export const SearchInfo = styled.div`
     position : absolute;
@@ -159,7 +165,8 @@ export const SearchSwitch = styled.span`
 	    display : block;
 	    margin-right : 3px;
 	    float : left;
-	    font-size : 12px;
+	    font-weight : 500;
+	    font-size : 14px;
         transition : all .2s ease-in;
         transform-origin: center center;
 	}
