@@ -8,10 +8,10 @@ export const loginAction = (data) => ({
 
 export const asyncLogin = (account, password) => {
     return (dispatch) => {
-        axios.get('/api/login.json', {
+        axios.get('./api/login.json', {
                     account : account,
                     password : password
-            }).then((res) =>{
+            }).then(() =>{
                 dispatch(loginAction(account));
             })
     }

@@ -47,7 +47,7 @@ export const changeSearchList = (currentPage) => ({
  */
 export const getList = () => {
     return (dispatch) => {
-        axios.get('/api/headerList.json').then((res) => {
+        axios.get('./api/headerList.json').then((res) => {
             let data = getSearchList(res.data.data);
             dispatch(data);
         }).catch((data) => {

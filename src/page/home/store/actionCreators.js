@@ -15,7 +15,7 @@ export const getHomeArticleData = (data) => ({
 
 export const getHomeArticleDataAction = () => {
     return (dispatch) => {
-        axios.get('/api/home.json').then((res) => {
+        axios.get('./api/home.json').then((res) => {
             if(res.data.success === true){
                 dispatch(getHomeArticleData(res.data.data));
             }

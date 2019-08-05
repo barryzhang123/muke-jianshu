@@ -7,10 +7,9 @@ export const getDetailData = (title, content) => ({
     content
 })
 
-
-export const getDetailAction = (data) => {
+export const getDetailAction = () => {
     return (dispatch) => {
-        axios.get('/api/detail.json').then((res) => {
+        axios.get('./api/detail.json').then((res) => {
             const result = res.data.data;
             if(res.data.success === true){
                 dispatch(getDetailData(result.title, result.content));
