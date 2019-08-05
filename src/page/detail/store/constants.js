@@ -1,1 +1,1 @@
-export const HOME_GET_ARTICLE_DATA = 'home/get_article_data';
+export const DETAIL_GET_ARTICLE_DETAIL = 'detail/get_article_detail';

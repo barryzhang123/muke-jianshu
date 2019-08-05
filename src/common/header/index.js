@@ -8,6 +8,7 @@ import {CSSTransition} from 'react-transition-group'
 import  {connect} from 'react-redux';
 import '../../statics/iconfont/iconfont'
 import {Link} from 'react-router-dom'
+import imageSrc from '../../statics/image/nav_jsds_beta.png'
 
 class Header extends Component {
     getSearchArea(){
@@ -73,12 +74,17 @@ class Header extends Component {
                         <i className = 'iconfont write-icon'>&#58894;</i>
                         写文章
                     </Button>
-                    <Button className =  'register'>注册</Button>
                     {
-                        login === true? <NavItem className = 'right'>{account}</NavItem> :
+                        login === true ? <NavItem className='right'>{account}</NavItem> :
+                            <Link to={'/login'}><Button className =  'register'>注册</Button></Link>
+                    }
+                    {
+                        login === true? null :
                         <Link to={'/login'}><NavItem className = 'right'>登录</NavItem></Link>
                     }
-
+                    <NavItem className = 'right'>
+                        <img className = 'beta' src={imageSrc} alt = '图片'/>
+                    </NavItem>
                     <NavItem className = 'right'>
                         <i className = 'iconfont item-Aa'>&#xe636;</i>
                     </NavItem>

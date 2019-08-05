@@ -1,21 +1,23 @@
 import * as constants from './constants'
 import axios from 'axios'
 
-export const getHomeArticleData = (data) => ({
-    type : constants.HOME_GET_ARTICLE_DATA,
-    topicList : data.topicList,
-    articleList : data.articleList,
-    recommendList : data.recommendList,
-});
+export const getDetailData = (title, content) => ({
+    type : constants.DETAIL_GET_ARTICLE_DETAIL,
+    title,
+    content
+})
 
-export const getHomeArticleDataAction = () => {
+
+export const getDetailAction = (data) => {
     return (dispatch) => {
-        axios.get('/api/home.json').then((res) => {
+        axios.get('/api/detail.json').then((res) => {
+            const result = res.data.data;
             if(res.data.success === true){
-                dispatch(getHomeArticleData(res.data.data));
+                dispatch(getDetailData(result.title, result.content));
             }
-        }).catch((error) => {
+        }).catch(() => {
 
         })
     }
-};
+}
+

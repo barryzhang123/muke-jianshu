@@ -1,6 +1,11 @@
 import * as constants from './constants'
 import axios from 'axios'
 
+export const toggleShowScrollAction = (data) => ({
+    type : constants.HOME_SHOW_SCROLL_TO_TOP,
+    data
+});
+
 export const getHomeArticleData = (data) => ({
     type : constants.HOME_GET_ARTICLE_DATA,
     topicList : data.topicList,

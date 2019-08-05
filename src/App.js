@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import {Provider} from 'react-redux'
 import Home from './page/home';
-import Detail from './page/detail';
+import Detail from './page/detail/loadable';
 import Login from './page/login';
 import Header from './common/header';
 import store from  './store';

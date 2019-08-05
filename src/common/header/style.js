@@ -37,9 +37,14 @@ export const NavItem = styled.div`
         font-size : 15px;
         float : right;
         color : #969696;
+        .beta{
+            height : 25px;
+            vertical-align : middle; 
+        }
     }
     &.active{
         color : #ea6f5a;
+        
     }
 `
 export const NavSearch = styled.input.attrs({
