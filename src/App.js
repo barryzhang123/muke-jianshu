@@ -1,11 +1,14 @@
 import React,{ Component } from 'react';
 import {Provider} from 'react-redux'
 import Home from './page/home';
-import Detail from './page/detail/loadable';
+import loadable from './page/detail/loadable';
 import Login from './page/login';
 import Header from './common/header';
 import store from  './store';
 import {HashRouter, Route} from  'react-router-dom'
+
+const DeatilLoadable = loadable(() => import('./page/detail/'));
+const LoginLoadable = loadable(() => import('./page/login/'));
 
 class App extends Component{
   render(){
@@ -15,8 +18,8 @@ class App extends Component{
             <div>
                 <Header />
                 <Route path ='/' exact component={Home} />
-                <Route path ='/login' exact component={Login} />
-                <Route path ='/detail/:id' exact component={Detail} />
+                <Route path ='/login' exact component={LoginLoadable} />
+                <Route path ='/detail/:id' exact component={DeatilLoadable} />
             </div>
             </HashRouter>
         </Provider>
