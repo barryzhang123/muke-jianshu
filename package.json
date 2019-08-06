@@ -2,7 +2,7 @@
   "name": "muke-jianshu",
   "version": "0.1.0",
   "private": true,
-  "homepage" :".",
+  "homepage": ".",
   "dependencies": {
     "@babel/core": "7.4.3",
     "@svgr/webpack": "4.1.0",
@@ -52,6 +52,7 @@
     "react-loadable": "^5.5.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.0.1",
     "react-transition-group": "^4.2.1",
     "redux": "^4.0.4",
     "redux-immutable": "^4.0.0",
@@ -70,9 +71,10 @@
     "workbox-webpack-plugin": "4.2.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
